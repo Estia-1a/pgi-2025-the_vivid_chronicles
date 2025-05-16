@@ -14,3 +14,9 @@
 void helloWorld() {
     printf("Hello World !");
 }
+
+
+void dimension(){
+    printf("salut");
+}
+
