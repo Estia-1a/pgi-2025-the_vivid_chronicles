@@ -59,5 +59,8 @@ int main(int argc, char **argv) {
 
   }
 
- 
+ if (strncmp(configuration.command, "max_component", 13)==0){
+    char *component = &configuration.command[14];
+    max_component(configuration.filenames[0], component);
+  }
 }

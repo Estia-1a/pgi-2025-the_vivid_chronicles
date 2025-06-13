@@ -88,3 +88,31 @@ void min_pixel(char *source_path) {
     printf("min_pixel (%d, %d): %d, %d, %d\n", min_x, min_y, min_rouge, min_vert, min_bleu);
     free(data);
 }
+
+
+void max_component(char *source_path, char *component) {
+    unsigned char *data = NULL;
+    int width, height, channel_count;
+    read_image_data(source_path, &data, &width, &height, &channel_count);
+    int max_valeur = -1;
+    int max_x = 0, max_y = 0;
+    int composant_index = 0;
+    if (component[0] == 'G') {
+        composant_index = 1;
+    } else if (component[0] == 'B') {
+        composant_index = 2;
+    }
+    for (int y = 0; y < height; y++) {
+        for (int x = 0; x < width; x++) {
+            int position = (y * width + x) * 3;
+            int valeur = data[position + composant_index];
+            if (valeur > max_valeur) {
+                max_valeur = valeur;
+                max_x = x;
+                max_y = y;
+            }
+        }
+    }
+    printf("max_component %s (%d, %d): %d\n", component, max_x, max_y, max_valeur);
+    free(data);
+}
