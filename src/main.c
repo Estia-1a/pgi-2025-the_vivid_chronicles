@@ -44,16 +44,22 @@ int main(int argc, char **argv) {
 
   }
 
-
+if (strcmp(configuration.command, "min_pixel")==0){
+    min_pixel(configuration.filenames[0]);
+  }
   /*
    * TO COMPLETE
    */
-  
+  if ( strncmp( configuration.command, "second_line", 11 ) == 0 ) {
+    /* helloworld() function is defined in feature.h and implemented in feature.c */
+    second_line(configuration.filenames[0]);
+  }
   if ( strncmp( configuration.command, "first_pixel", 11) == 0 ) {
     first_pixel(configuration.filenames[0]);
 
   }
 
+ 
   if ( strncmp( configuration.command, "max_pixel" , 9 ) == 0 ) {
     max_pixel(configuration.filenames[0]);
   }
