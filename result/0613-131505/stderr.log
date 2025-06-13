@@ -1,0 +1,12 @@
+/home/runner/work/pgi-2025-the_vivid_chronicles/pgi-2025-the_vivid_chronicles/src/features.c: In function ‘tenth_pixel’:
+/home/runner/work/pgi-2025-the_vivid_chronicles/pgi-2025-the_vivid_chronicles/src/features.c:41:5: warning: implicit declaration of function ‘free’ [-Wimplicit-function-declaration]
+   41 |     free(data);
+      |     ^~~~
+/home/runner/work/pgi-2025-the_vivid_chronicles/pgi-2025-the_vivid_chronicles/src/features.c:6:1: note: include ‘<stdlib.h>’ or provide a declaration of ‘free’
+    5 | #include "utils.h"
+  +++ |+#include <stdlib.h>
+    6 | 
+/home/runner/work/pgi-2025-the_vivid_chronicles/pgi-2025-the_vivid_chronicles/src/features.c:41:5: warning: incompatible implicit declaration of built-in function ‘free’ [-Wbuiltin-declaration-mismatch]
+   41 |     free(data);
+      |     ^~~~
+/home/runner/work/pgi-2025-the_vivid_chronicles/pgi-2025-the_vivid_chronicles/src/features.c:41:5: note: include ‘<stdlib.h>’ or provide a declaration of ‘free’
