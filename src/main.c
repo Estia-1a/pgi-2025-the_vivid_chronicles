@@ -45,7 +45,7 @@ int main(int argc, char **argv) {
   }
 
   if (strncmp(configuration.command, "print_pixel", 11) == 0) {
-    print_pixel(configuration.filenames[0], configuration.x=45, configuration.y=500);
+    print_pixel(configuration.filenames[0], atoi(configuration.arguments[0]), atoi(configuration.arguments[1]));
 }
 if (strcmp(configuration.command, "min_pixel")==0){
     min_pixel(configuration.filenames[0]);
