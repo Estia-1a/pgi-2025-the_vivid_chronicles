@@ -15,5 +15,11 @@ typedef struct _pixelRGB {
    char R ; 
 } pixelRGB ;
 
+typedef struct {
+    unsigned char R;
+    unsigned char G;
+    unsigned char B;
+} pixelRGB;
+
 
 #endif
