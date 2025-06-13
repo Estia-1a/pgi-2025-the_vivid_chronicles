@@ -12,5 +12,9 @@
  */
 
 void helloWorld() {
-    printf("Hello World !");
+    printf("Hello World!!!");
+}
+
+void dimension () {
+    printf("dimdim");
 }
