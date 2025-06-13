@@ -1,4 +1,4 @@
-#include <estia-image.h>
+#include "estia-image.h"
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -24,6 +24,12 @@ void dimension(char*source_path){
     printf("dimension: %d, %d\n", width, height);
 }
 
+void first_pixel(char *source_path) {
+    unsigned char *data = NULL;
+    int width = 0, height = 0, channel_count = 0;
+    read_image_data(source_path, &data, &width, &height, &channel_count);
+    printf("first_pixel: %d, %d, %d\n", data[0],data[1], data[2]);
+}
 void tenth_pixel(char *source_path){
     unsigned char *data = NULL;
     int width, height, channel_count;
@@ -35,6 +41,25 @@ void tenth_pixel(char *source_path){
     printf("tenth_pixel: %d, %d, %d\n", rouge, vert, bleu);
     free(data);
 }
+void second_line(char *source_path){
+  int width=0, height=0, channel_count=0;
+  unsigned char *data;
+  
+  read_image_data(source_path, &data, &width,&height,&channel_count);
+  
+  if (height < 2) {
+        printf("Erreur de lecture de l'image\n");
+        return;
+  }
+  int position = 1 * width * 3;
+  int r=data[position];
+  int g=data[position+1];
+  int b=data[position+2];
+
+  printf("second_line : %d, %d, %d\n",r,g,b);
+
+}
+  
 
 void min_pixel(char *source_path) {
     unsigned char *data = NULL;
