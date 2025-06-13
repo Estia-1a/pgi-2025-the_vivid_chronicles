@@ -44,7 +44,7 @@ int main(int argc, char **argv) {
 
   }
 
- 
+
   /*
    * TO COMPLETE
    */
@@ -53,5 +53,10 @@ int main(int argc, char **argv) {
     first_pixel(configuration.filenames[0]);
 
   }
+
+  if ( strncmp( configuration.command, "max_pixel" , 9 ) == 0 ) {
+    max_pixel(configuration.filenames[0]);
+  }
+
 
 }
