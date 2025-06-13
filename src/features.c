@@ -23,3 +23,14 @@ void dimension(char*source_path){
     printf("dimension: %d, %d\n", width, height);
 }
 
+void tenth_pixel(char *source_path){
+    unsigned char *data = NULL;
+    int widht, height, channel_count;
+    read_image_data(source_path, &data, &widht, &height, &channel_count);
+    int position= 9*3;
+    int rouge = data[position];
+    int vert = data[position+1];
+    int bleu = data[position+2];
+    printf("tenth_pixel: %d, %d, %d\n", rouge, vert, bleu);
+    free(data);
+}

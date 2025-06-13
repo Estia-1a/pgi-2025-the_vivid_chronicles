@@ -38,6 +38,13 @@ int main(int argc, char **argv) {
     /* helloworld() function is defined in feature.h and implemented in feature.c */
     dimension(configuration.filenames[0]);
   }
+
+ if (strcmp(configuration.command, "tenth_pixel")==0){
+    tenth_pixel(configuration.filenames[0]);
+
+  }
+
+ 
   /*
    * TO COMPLETE
    */
