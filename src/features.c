@@ -1,6 +1,6 @@
 #include <estia-image.h>
 #include <stdio.h>
-
+#include <stdlib.h>
 #include "features.h"
 #include "utils.h"
 
@@ -32,5 +32,26 @@ void tenth_pixel(char *source_path){
     int vert = data[position+1];
     int bleu = data[position+2];
     printf("tenth_pixel: %d, %d, %d\n", rouge, vert, bleu);
+    free(data);
+}
+void print_pixel(char *filename, int x, int y) {
+    unsigned char *data = NULL;
+    int width = 0, height = 0, channels_count = 0;
+    read_image_data(filename, &data, &width, &height, &channels_count);
+    
+    if (data == NULL) {
+        printf("Erreur : impossible\n");
+        return;
+    }
+    pixel *p = get_pixel(data, width, height, channels_count, x, y);
+    
+    if (p == NULL) {
+        printf("Erreur : coordonnées invalid\n");
+        free(data);
+        return;
+    }
+    printf("print_pixel (%d, %d): %d, %d, %d\n", x, y, p->r, p->g, p->b);
+
+    free(p);
     free(data);
 }
