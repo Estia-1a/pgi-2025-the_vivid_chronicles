@@ -68,4 +68,8 @@ if (strcmp(configuration.command, "min_pixel")==0){
   }
 
 
+ if (strncmp(configuration.command, "max_component", 13)==0){
+    char *component = &configuration.command[14];
+    max_component(configuration.filenames[0], component);
+  }
 }
