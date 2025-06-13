@@ -41,9 +41,10 @@ int main(int argc, char **argv) {
   /*
    * TO COMPLETE
    */
-  if ( strncmp( configuration.command, "dimension", 9 ) == 0 ) {
+  if ( strncmp( configuration.command, "second_line", 11 ) == 0 ) {
     /* helloworld() function is defined in feature.h and implemented in feature.c */
-    dimension(configuration.filenames[0]);
+    second_line(configuration.filenames[0]);
   }
   return 0;
+ 
 }
