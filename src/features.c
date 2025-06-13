@@ -1,5 +1,6 @@
 #include <estia-image.h>
 #include <stdio.h>
+#include <stdlib.h>
 
 #include "features.h"
 #include "utils.h"
@@ -25,12 +26,40 @@ void dimension(char*source_path){
 
 void tenth_pixel(char *source_path){
     unsigned char *data = NULL;
-    int widht, height, channel_count;
-    read_image_data(source_path, &data, &widht, &height, &channel_count);
+    int width, height, channel_count;
+    read_image_data(source_path, &data, &width, &height, &channel_count);
     int position= 9*3;
     int rouge = data[position];
     int vert = data[position+1];
     int bleu = data[position+2];
     printf("tenth_pixel: %d, %d, %d\n", rouge, vert, bleu);
+    free(data);
+}
+
+void min_pixel(char *source_path) {
+    unsigned char *data = NULL;
+    int width, height, channel_count;
+    read_image_data(source_path, &data, &width, &height, &channel_count);
+    int min_somme = 999999; 
+    int min_x = 0, min_y = 0;
+    int min_rouge = 0, min_vert = 0, min_bleu = 0;
+    for (int y = 0; y < height; y++) {
+        for (int x = 0; x < width; x++) {
+            int position = (y * width + x) * 3;
+            int rouge = data[position];
+            int vert = data[position + 1];
+            int bleu = data[position + 2];
+            int somme = rouge + vert + bleu;
+            if (somme < min_somme) {
+                min_somme = somme;
+                min_x = x;
+                min_y = y;
+                min_rouge = rouge;
+                min_vert = vert;
+                min_bleu = bleu;
+            }
+        }
+    }
+    printf("min_pixel (%d, %d): %d, %d, %d\n", min_x, min_y, min_rouge, min_vert, min_bleu);
     free(data);
 }

@@ -44,7 +44,9 @@ int main(int argc, char **argv) {
 
   }
 
- 
+ if (strcmp(configuration.command, "min_pixel")==0){
+    min_pixel(configuration.filenames[0]);
+  }
   /*
    * TO COMPLETE
    */
