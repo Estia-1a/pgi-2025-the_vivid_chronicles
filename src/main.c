@@ -72,4 +72,8 @@ if (strcmp(configuration.command, "min_pixel")==0){
     char *component = &configuration.command[14];
     max_component(configuration.filenames[0], component);
   }
+
+if (strncmp(configuration.command, "color_red", 9) == 0) {
+    color_red(configuration.filenames[0]);
+ }
 }
