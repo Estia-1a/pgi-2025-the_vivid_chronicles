@@ -192,3 +192,28 @@ void color_red(const char *input_filename) {
     free(apres);
     free(avant);
 }
+void color_green(const char *input_filename) {
+    int width, height, channel_count;
+    unsigned char *apres;
+    unsigned char *avant;
+    
+    int result = read_image_data(input_filename, &apres, &width, &height, &channel_count);
+    if (result == 0 || apres == NULL) {
+        return;
+    }
+    avant = malloc(width * height * 3);
+    if (avant == NULL) {
+        free(avant);
+        return;
+    }
+    
+    for (int i = 0; i < width * height; i++) {
+        avant[i * 3] = 0;     
+        avant[i * 3 + 1] = apres[i*3+1];                 
+        avant[i * 3 + 2] = 0;                 
+    }
+
+    write_image_data("image_out.bmp", avant, width, height);
+    free(apres);
+    free(avant);
+}
