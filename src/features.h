@@ -9,4 +9,5 @@ void first_pixel(char *source_path);
 void tenth_pixel(char *source_path);
 void max_pixel(char *source_path);
 void min_pixel(char *source_path);
+void min_component(char *source_path, char component);
 #endif
