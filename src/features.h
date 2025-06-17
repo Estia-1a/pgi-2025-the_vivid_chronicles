@@ -14,4 +14,5 @@ void max_component(char *source_path, char *component);
 void color_red(const char *input_file);
 void color_green(const char *input_file);
 void color_bleu(const char *input_file);
+void color_gris(const char *input_file);
 #endif

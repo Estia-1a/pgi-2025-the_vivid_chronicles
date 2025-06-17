@@ -82,4 +82,7 @@ if (strncmp(configuration.command, "color_red", 9) == 0) {
  if (strncmp(configuration.command, "color_bleu", 9) == 0) {
     color_bleu(configuration.filenames[0]);
  }
+  if (strncmp(configuration.command, "color_gris", 9) == 0) {
+    color_gris(configuration.filenames[0]);
+ }
 }
