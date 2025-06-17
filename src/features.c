@@ -292,3 +292,23 @@ void color_invert(char *source_path) {
     printf("Image inversée sauvegardée dans image_out.bmp\n");
     free(data);
 }
+void color_gray_luminance(char *source_path) {
+    unsigned char *data = NULL;
+    int width, height, channel_count;
+    read_image_data(source_path, &data, &width, &height, &channel_count);
+    for (int y = 0; y < height; y++) {
+        for (int x = 0; x < width; x++) {
+            int position = (y * width + x) * 3;
+            int rouge = data[position];
+            int vert = data[position + 1];
+            int bleu = data[position + 2];
+            unsigned char valeur_gris = (unsigned char)(0.21 * rouge + 0.72 * vert + 0.07 * bleu);
+            data[position] = valeur_gris;
+            data[position + 1] = valeur_gris;
+            data[position + 2] = valeur_gris;
+        }
+    }
+    write_image_data("image_out.bmp", data, width, height);
+    printf("Image en niveaux de gris sauvegardée dans image_out.bmp\n");
+    free(data);
+}
