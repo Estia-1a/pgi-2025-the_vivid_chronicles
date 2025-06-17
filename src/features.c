@@ -245,6 +245,34 @@ void color_bleu(const char *input_filename) {
     free(avant);
 }
 
+void color_gris(const char *input_filename) {
+    int width, height, channel_count;
+    unsigned char *apres;
+    unsigned char *avant;
+    
+    int result = read_image_data(input_filename, &apres, &width, &height, &channel_count);
+    if (result == 0 || apres == NULL) {
+        return;
+    }
+    
+    avant = malloc(width * height * 3);
+    if (avant == NULL) {
+        free(apres);  
+        return;
+    }
+    
+    for (int i = 0; i < width * height; i++) {
+        unsigned char gray_value =(apres[i * 3] + apres[i * 3 + 1] + apres[i * 3 + 2]) / 3;
+        avant[i * 3] = gray_value;     
+        avant[i * 3 + 1] = gray_value; 
+        avant[i * 3 + 2] = gray_value; 
+    }
+    
+    write_image_data("image_out.bmp", avant, width, height);
+    free(apres);
+    free(avant);
+}
+
 void color_invert(char *source_path) {
     unsigned char *data = NULL;
     int width, height, channel_count;
