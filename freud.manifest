@@ -3,6 +3,14 @@ dimension
 second_line
 first_pixel
 tenth_pixel
+print_pixel
 max_pixel
 min_pixel
 min_component
+max_component
+color_red
+color_green
+color_bleu
+color_gris
+color_invert
+color_gray_luminance

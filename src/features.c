@@ -41,6 +41,27 @@ void tenth_pixel(char *source_path){
     printf("tenth_pixel: %d, %d, %d\n", rouge, vert, bleu);
     free(data);
 }
+void print_pixel(char *filename, int x, int y) {
+    unsigned char *data = NULL;
+    int width = 0, height = 0, channels_count = 0;
+    read_image_data(filename, &data, &width, &height, &channels_count);
+    
+    if (data == NULL) {
+        printf("Erreur : impossible\n");
+        return;
+    }
+    pixel *p = get_pixel(data, width, height, channels_count, x, y);
+    
+    if (p == NULL) {
+        printf("Erreur : coordonnées invalid\n");
+        free(data);
+        return;
+    }
+    printf("print_pixel (%d, %d): %d, %d, %d\n", x, y, p->r, p->g, p->b);
+
+    free(p);
+    free(data);
+}
 
 void max_pixel(char *source_path) {
     unsigned char *data = NULL;
@@ -149,4 +170,179 @@ void min_component(char *source_path, char component) {
         }
     }
     printf("min_component %c (%d, %d): %d\n", component, min_x, min_y, min_value);
+}
+
+
+void max_component(char *source_path, char *component) {
+    unsigned char *data = NULL;
+    int width, height, channel_count;
+    read_image_data(source_path, &data, &width, &height, &channel_count);
+    int max_valeur = -1;
+    int max_x = 0, max_y = 0;
+    int composant_index = 0;
+    if (component[0] == 'G') {
+        composant_index = 1;
+    } else if (component[0] == 'B') {
+        composant_index = 2;
+    }
+    for (int y = 0; y < height; y++) {
+        for (int x = 0; x < width; x++) {
+            int position = (y * width + x) * 3;
+            int valeur = data[position + composant_index];
+            if (valeur > max_valeur) {
+                max_valeur = valeur;
+                max_x = x;
+                max_y = y;
+            }
+        }
+    }
+    printf("max_component %s (%d, %d): %d\n", component, max_x, max_y, max_valeur);
+    free(data);
+}
+
+
+void color_red(const char *input_filename) {
+    int width, height, channel_count;
+    unsigned char *apres;
+    unsigned char *avant;
+    
+    int result = read_image_data(input_filename, &apres, &width, &height, &channel_count);
+    if (result == 0 || apres == NULL) {
+        return;
+    }
+    avant = malloc(width * height * 3);
+    if (avant == NULL) {
+        free(avant);
+        return;
+    }
+    
+    for (int i = 0; i < width * height; i++) {
+        avant[i * 3] = apres[i * 3];     
+        avant[i * 3 + 1] = 0;                 
+        avant[i * 3 + 2] = 0;                 
+    }
+
+    write_image_data("image_out.bmp", avant, width, height);
+    free(apres);
+    free(avant);
+}
+void color_green(const char *input_filename) {
+    int width, height, channel_count;
+    unsigned char *apres;
+    unsigned char *avant;
+    
+    int result = read_image_data(input_filename, &apres, &width, &height, &channel_count);
+    if (result == 0 || apres == NULL) {
+        return;
+    }
+    avant = malloc(width * height * 3);
+    if (avant == NULL) {
+        free(avant);
+        return;
+    }
+    
+    for (int i = 0; i < width * height; i++) {
+        avant[i * 3] = 0;     
+        avant[i * 3 + 1] = apres[i*3+1];                 
+        avant[i * 3 + 2] = 0;                 
+    }
+
+    write_image_data("image_out.bmp", avant, width, height);
+    free(apres);
+    free(avant);
+}
+
+
+void color_bleu(const char *input_filename) {
+    int width, height, channel_count;
+    unsigned char *apres;
+    unsigned char *avant;
+    
+    int result = read_image_data(input_filename, &apres, &width, &height, &channel_count);
+    if (result == 0 || apres == NULL) {
+        return;
+    }
+    avant = malloc(width * height * 3);
+    if (avant == NULL) {
+        free(avant);
+        return;
+    }
+    
+    for (int i = 0; i < width * height; i++) {
+        avant[i * 3] = 0;     
+        avant[i * 3 + 1] = 0;                 
+        avant[i * 3 + 2] = apres[i*3+2];                 
+    }
+
+    write_image_data("image_out.bmp", avant, width, height);
+    free(apres);
+    free(avant);
+}
+
+void color_gris(const char *input_filename) {
+    int width, height, channel_count;
+    unsigned char *apres;
+    unsigned char *avant;
+    
+    int result = read_image_data(input_filename, &apres, &width, &height, &channel_count);
+    if (result == 0 || apres == NULL) {
+        return;
+    }
+    
+    avant = malloc(width * height * 3);
+    if (avant == NULL) {
+        free(apres);  
+        return;
+    }
+    
+    for (int i = 0; i < width * height; i++) {
+        unsigned char gray_value =(apres[i * 3] + apres[i * 3 + 1] + apres[i * 3 + 2]) / 3;
+        avant[i * 3] = gray_value;     
+        avant[i * 3 + 1] = gray_value; 
+        avant[i * 3 + 2] = gray_value; 
+    }
+    
+    write_image_data("image_out.bmp", avant, width, height);
+    free(apres);
+    free(avant);
+}
+
+void color_invert(char *source_path) {
+    unsigned char *data = NULL;
+    int width, height, channel_count;
+    read_image_data(source_path, &data, &width, &height, &channel_count);
+    for (int y = 0; y < height; y++) {
+        for (int x = 0; x < width; x++) {
+            int position = (y * width + x) * 3;
+            int rouge = data[position];
+            int vert = data[position + 1];
+            int bleu = data[position + 2];
+            data[position] = 255 - rouge;
+            data[position + 1] = 255 - vert;
+            data[position + 2] = 255 - bleu;
+        }
+    }
+    write_image_data("image_out.bmp", data, width, height);
+    printf("Image inversée sauvegardée dans image_out.bmp\n");
+    free(data);
+}
+void color_gray_luminance(char *source_path) {
+    unsigned char *data = NULL;
+    int width, height, channel_count;
+    read_image_data(source_path, &data, &width, &height, &channel_count);
+    for (int y = 0; y < height; y++) {
+        for (int x = 0; x < width; x++) {
+            int position = (y * width + x) * 3;
+            int rouge = data[position];
+            int vert = data[position + 1];
+            int bleu = data[position + 2];
+            unsigned char valeur_gris = (unsigned char)(0.21 * rouge + 0.72 * vert + 0.07 * bleu);
+            data[position] = valeur_gris;
+            data[position + 1] = valeur_gris;
+            data[position + 2] = valeur_gris;
+        }
+    }
+    write_image_data("image_out.bmp", data, width, height);
+    printf("Image en niveaux de gris sauvegardée dans image_out.bmp\n");
+    free(data);
 }
