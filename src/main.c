@@ -79,4 +79,8 @@ if (strncmp(configuration.command, "color_red", 9) == 0) {
  if (strncmp(configuration.command, "color_green", 9) == 0) {
     color_green(configuration.filenames[0]);
  }
+ 
+ if (strcmp(configuration.command, "color_invert")==0){
+    color_invert(configuration.filenames[0]);
+  }
 }

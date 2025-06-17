@@ -217,3 +217,23 @@ void color_green(const char *input_filename) {
     free(apres);
     free(avant);
 }
+
+void color_invert(char *source_path) {
+    unsigned char *data = NULL;
+    int width, height, channel_count;
+    read_image_data(source_path, &data, &width, &height, &channel_count);
+    for (int y = 0; y < height; y++) {
+        for (int x = 0; x < width; x++) {
+            int position = (y * width + x) * 3;
+            int rouge = data[position];
+            int vert = data[position + 1];
+            int bleu = data[position + 2];
+            data[position] = 255 - rouge;
+            data[position + 1] = 255 - vert;
+            data[position + 2] = 255 - bleu;
+        }
+    }
+    write_image_data("image_out.bmp", data, width, height);
+    printf("Image inversée sauvegardée dans image_out.bmp\n");
+    free(data);
+}

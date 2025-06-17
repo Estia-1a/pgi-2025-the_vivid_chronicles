@@ -9,3 +9,4 @@ min_pixel
 max_component
 color_red
 color_green
+color_invert
