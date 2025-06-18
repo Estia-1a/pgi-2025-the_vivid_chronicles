@@ -139,6 +139,40 @@ void min_pixel(char *source_path) {
 }
 
 
+void min_component(char *source_path, char component) {
+    unsigned char *data = NULL;
+    int width = 0, height = 0, channel_count = 0;
+    read_image_data(source_path, &data, &width, &height, &channel_count);
+    int min_value = 255;
+    int min_x = 0;
+    int min_y = 0;
+    int channel = 0;
+    if (component == 'R') {
+        channel = 0;
+    }
+    if (component == 'G') {
+        channel = 1;
+    }
+    if (component == 'B') {
+        channel = 2;
+    }
+
+    for (int y = 0; y < height; y++) {
+        for (int x = 0; x < width; x++) {
+            int position = (y * width + x) * 3 + channel;
+            int value = data[position];
+
+            if (value < min_value) {
+                min_value = value;
+                min_x = x;
+                min_y = y;
+            }
+        }
+    }
+    printf("min_component %c (%d, %d): %d\n", component, min_x, min_y, min_value);
+}
+
+
 void max_component(char *source_path, char *component) {
     unsigned char *data = NULL;
     int width, height, channel_count;
