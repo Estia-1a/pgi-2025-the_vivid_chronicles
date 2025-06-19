@@ -72,7 +72,7 @@ if (strcmp(configuration.command, "min_pixel")==0){
     min_component(configuration.filenames[0], component);
   }
  if (strncmp(configuration.command, "max_component", 13)==0){
-    char *component = &configuration.command[14];
+    char *component = &configuration.command[0];
     max_component(configuration.filenames[0], component);
   }
 

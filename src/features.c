@@ -412,4 +412,32 @@ void rotate_acw(char *source_path) {
     write_image_data("image_out.bmp", temp_data, new_width, new_height);
     printf("Image tournée de 90° anti-horaire sauvegardée dans image_out.bmp\n");
     free(data);
+
 }
+void mirror_vertical(char *source_path) {
+    unsigned char *data = NULL;
+    int width = 0, height = 0, channel_count = 0;
+     for (int y = 0; y < height / 2; y++) {
+        for (int x = 0; x < width; x++) {
+            int top_pos = (y * width + x) * channel_count;
+            int bottom_y = height - 1 - y;
+            int bottom_pos = (bottom_y * width + x) * channel_count;
+            for (int c = 0; c < channel_count; c++) {
+                unsigned char temp = data[top_pos + c];
+                data[top_pos + c] = data[bottom_pos + c];
+                data[bottom_pos + c] = temp;
+            }
+        }
+    
+    }
+    
+    char output_path[] = "image_out.bmp";
+    int write_result = write_image_data(output_path, data, width, height);
+    if (write_result != 0) {
+        printf("A new image %s that is vertical symmetry of the input image\n", output_path);
+    } 
+
+}   
+
+        
+    
