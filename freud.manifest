@@ -14,5 +14,7 @@ color_bleu
 color_gris
 color_invert
 color_gray_luminance
+mirror_horizontal
 rotate_cw
 stat_report
+rotate_acw
