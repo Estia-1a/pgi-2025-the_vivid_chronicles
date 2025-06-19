@@ -18,4 +18,5 @@ void color_bleu(const char *input_file);
 void color_gris(const char *input_file);
 void color_invert(char *source_path);
 void color_gray_luminance(char *source_path);
+void mirror_horizontal(char *source_path);
 #endif

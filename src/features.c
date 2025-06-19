@@ -346,3 +346,25 @@ void color_gray_luminance(char *source_path) {
     printf("Image en niveaux de gris sauvegardée dans image_out.bmp\n");
     free(data);
 }
+
+void mirror_horizontal(char *source_path) {
+    unsigned char *data = NULL;
+    int width = 0, height = 0, channel_count = 0;
+    read_image_data(source_path, &data, &width, &height, &channel_count);
+    for (int y = 0; y < height; y++) {
+        for (int x = 0; x < width / 2; x++) {
+            int left_pos = (y * width + x) * channel_count;
+            int right_x = width - 1 - x;
+            int right_pos = (y * width + right_x) * channel_count;
+            for (int c = 0; c < channel_count; c++) {
+                unsigned char temp = data[left_pos + c];
+                data[left_pos + c] = data[right_pos + c];
+                data[right_pos + c] = temp;
+            }
+        }
+    }
+
+    char output_path[] = "image_out.bmp";
+    write_image_data(output_path, data, width, height);
+    printf("A new image %s that is horizontal symmetry of the input image\n", output_path);
+}
