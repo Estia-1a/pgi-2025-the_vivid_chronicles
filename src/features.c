@@ -373,20 +373,43 @@ void mirror_horizontal(char *source_path) {
     read_image_data(source_path, &data, &width, &height, &channel_count);
     int new_width = height;
     int new_height = width;
-    unsigned char *new_data = malloc(new_width * new_height * 3);
+    unsigned char temp_data[new_width * new_height * 3];
     for (int y = 0; y < height; y++) {
         for (int x = 0; x < width; x++) {
             int old_position = (y * width + x) * 3;
             int new_x = y;
             int new_y = width - 1 - x;
             int new_position = (new_y * new_width + new_x) * 3;
-            new_data[new_position] = data[old_position];
-            new_data[new_position + 1] = data[old_position + 1];
-            new_data[new_position + 2] = data[old_position + 2];
+            
+            temp_data[new_position] = data[old_position];
+            temp_data[new_position + 1] = data[old_position + 1];
+            temp_data[new_position + 2] = data[old_position + 2];
         }
     }
-    write_image_data("image_out.bmp", new_data, new_width, new_height);
+    write_image_data("image_out.bmp", temp_data, new_width, new_height);
     printf("Image tournée de 90° sauvegardée dans image_out.bmp\n");
     free(data);
-    free(new_data);
+}
+
+void rotate_acw(char *source_path) {
+    unsigned char *data = NULL;
+    int width, height, channel_count;
+    read_image_data(source_path, &data, &width, &height, &channel_count);
+    int new_width = height;
+    int new_height = width;
+    unsigned char temp_data[new_width * new_height * 3];
+    for (int y = 0; y < height; y++) {
+        for (int x = 0; x < width; x++) {
+            int old_position = (y * width + x) * 3;
+            int new_x = height - 1 - y;
+            int new_y = x;
+            int new_position = (new_y * new_width + new_x) * 3;
+            temp_data[new_position] = data[old_position];
+            temp_data[new_position + 1] = data[old_position + 1];
+            temp_data[new_position + 2] = data[old_position + 2];
+        }
+    }
+    write_image_data("image_out.bmp", temp_data, new_width, new_height);
+    printf("Image tournée de 90° anti-horaire sauvegardée dans image_out.bmp\n");
+    free(data);
 }

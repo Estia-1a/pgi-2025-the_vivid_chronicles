@@ -16,3 +16,4 @@ color_invert
 color_gray_luminance
 mirror_horizontal
 rotate_cw
+rotate_acw
