@@ -253,7 +253,7 @@ void color_green(const char *input_filename) {
 }
 
 
-void color_bleu(const char *input_filename) {
+void color_blue(const char *input_filename) {
     int width, height, channel_count;
     unsigned char *apres;
     unsigned char *avant;
@@ -279,7 +279,7 @@ void color_bleu(const char *input_filename) {
     free(avant);
 }
 
-void color_gris(const char *input_filename) {
+void color_gray(const char *input_filename) {
     int width, height, channel_count;
     unsigned char *apres;
     unsigned char *avant;
