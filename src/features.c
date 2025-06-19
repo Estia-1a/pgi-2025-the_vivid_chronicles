@@ -417,6 +417,7 @@ void rotate_acw(char *source_path) {
 void mirror_vertical(char *source_path) {
     unsigned char *data = NULL;
     int width = 0, height = 0, channel_count = 0;
+    read_image_data(source_path, &data, &width, &height, &channel_count);
      for (int y = 0; y < height / 2; y++) {
         for (int x = 0; x < width; x++) {
             int top_pos = (y * width + x) * channel_count;
