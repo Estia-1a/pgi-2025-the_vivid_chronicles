@@ -108,5 +108,7 @@ if (strncmp(configuration.command, "mirror_horizontal", 17) == 0){
 if (strncmp(configuration.command, "stat_report", 11) == 0) {
     stat_report(configuration.filenames[0]);
 }
+if (strncmp(configuration.command, "color_desaturate", 9) == 0) {
+    color_desaturate(configuration.filenames[0]);
 }
 

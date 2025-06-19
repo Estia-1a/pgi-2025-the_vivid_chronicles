@@ -490,6 +490,32 @@ void stat_report(char *source_path) {
     fclose(f);
     free_image_data(data);
 }
+void color_desaturate(char *source_path) {
+    char *data = NULL;
+    int width = 0, height = 0, n = 0;
+
+    read_image_data(source_path, &data, &width, &height, &n);
+
+    int size = width * height * n;
+    char *new_data = malloc(size);
+
+    for (int i = 0; i < width * height; i++) {
+        int r = data[i * n];
+        int g = data[i * n + 1];
+        int b = data[i * n + 2];
+
+        int min_val = r < g ? (r < b ? r : b) : (g < b ? g : b);
+        int max_val = r > g ? (r > b ? r : b) : (g > b ? g : b);
+        char new_val = (min_val + max_val) / 2;
+
+        new_data[i * n]     = new_val;
+        new_data[i * n + 1] = new_val;
+        new_data[i * n + 2] = new_val;
+    }
+
+    write_image_data("image_out.bmp", new_data, width, height);
+    free_image_data(data);
+}
 }   
 
         
