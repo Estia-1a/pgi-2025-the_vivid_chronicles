@@ -6,7 +6,7 @@
             "-f",
             "images/input/image.jpeg",
             "-c",
-            "rotate_cw"
+            "stat_report"
         
         ],
         "cwd": "${workspaceFolder}"
@@ -14,4 +14,7 @@
     "files.associations": {
         "unistd.h": "c"
     },
+    "githubPullRequests.ignoredPullRequestBranches": [
+        "main"
+    ],
 }
