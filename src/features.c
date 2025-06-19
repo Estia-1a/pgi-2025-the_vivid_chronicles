@@ -367,4 +367,26 @@ void mirror_horizontal(char *source_path) {
     char output_path[] = "image_out.bmp";
     write_image_data(output_path, data, width, height);
     printf("A new image %s that is horizontal symmetry of the input image\n", output_path);
+}void rotate_cw(char *source_path) {
+    unsigned char *data = NULL;
+    int width, height, channel_count;
+    read_image_data(source_path, &data, &width, &height, &channel_count);
+    int new_width = height;
+    int new_height = width;
+    unsigned char *new_data = malloc(new_width * new_height * 3);
+    for (int y = 0; y < height; y++) {
+        for (int x = 0; x < width; x++) {
+            int old_position = (y * width + x) * 3;
+            int new_x = y;
+            int new_y = width - 1 - x;
+            int new_position = (new_y * new_width + new_x) * 3;
+            new_data[new_position] = data[old_position];
+            new_data[new_position + 1] = data[old_position + 1];
+            new_data[new_position + 2] = data[old_position + 2];
+        }
+    }
+    write_image_data("image_out.bmp", new_data, new_width, new_height);
+    printf("Image tournée de 90° sauvegardée dans image_out.bmp\n");
+    free(data);
+    free(new_data);
 }
