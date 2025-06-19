@@ -82,11 +82,11 @@ if (strncmp(configuration.command, "color_red", 9) == 0) {
  if (strncmp(configuration.command, "color_green", 9) == 0) {
     color_green(configuration.filenames[0]);
  }
- if (strncmp(configuration.command, "color_bleu", 9) == 0) {
-    color_bleu(configuration.filenames[0]);
+ if (strncmp(configuration.command, "color_blue", 9) == 0) {
+    color_blue(configuration.filenames[0]);
  }
-  if (strncmp(configuration.command, "color_gris", 9) == 0) {
-    color_gris(configuration.filenames[0]);
+  if (strncmp(configuration.command, "color_gray", 9) == 0) {
+    color_gray(configuration.filenames[0]);
  }
  
  if (strcmp(configuration.command, "color_invert")==0){
@@ -103,6 +103,12 @@ if (strncmp(configuration.command, "mirror_horizontal", 17) == 0){
 }
   if (strcmp(configuration.command, "rotate_acw")==0){
     rotate_acw(configuration.filenames[0]);
+    
 }
+if (strncmp(configuration.command, "stat_report", 11) == 0) {
+    stat_report(configuration.filenames[0]);
+}
+if (strncmp(configuration.command, "color_desaturate", 9) == 0) {
+    color_desaturate(configuration.filenames[0]);
 }
 

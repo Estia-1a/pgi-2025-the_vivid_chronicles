@@ -253,7 +253,7 @@ void color_green(const char *input_filename) {
 }
 
 
-void color_bleu(const char *input_filename) {
+void color_blue(const char *input_filename) {
     int width, height, channel_count;
     unsigned char *apres;
     unsigned char *avant;
@@ -279,7 +279,7 @@ void color_bleu(const char *input_filename) {
     free(avant);
 }
 
-void color_gris(const char *input_filename) {
+void color_gray(const char *input_filename) {
     int width, height, channel_count;
     unsigned char *apres;
     unsigned char *avant;
@@ -437,7 +437,86 @@ void mirror_vertical(char *source_path) {
     if (write_result != 0) {
         printf("A new image %s that is vertical symmetry of the input image\n", output_path);
     } 
+void stat_report(char *source_path) {
+    char *data = NULL;
+    int width = 0, height = 0, n = 0;
 
+    read_image_data(source_path, &data, &width, &height, &n);
+
+    int max_pixel = 0;
+    int min_pixel = 255 * n;
+
+    int max_r = 0, min_r = 255;
+    int max_g = 0, min_g = 255;
+    int max_b = 0, min_b = 255;
+
+    for (int y = 0; y < height; y++) {
+        for (int x = 0; x < width; x++) {
+            int idx = (y * width + x) * n;
+            int r = data[idx];
+            int g = data[idx + 1];
+            int b = data[idx + 2];
+
+            int pixel_sum = r + g + b;
+
+            if (pixel_sum > max_pixel) max_pixel = pixel_sum;
+            if (pixel_sum < min_pixel) min_pixel = pixel_sum;
+
+            if (r > max_r) max_r = r;
+            if (r < min_r) min_r = r;
+
+            if (g > max_g) max_g = g;
+            if (g < min_g) min_g = g;
+
+            if (b > max_b) max_b = b;
+            if (b < min_b) min_b = b;
+        }
+    }
+
+    FILE *f = fopen("stat_report.txt", "w");
+    if (!f) {
+        printf("Erreur lors de l'ouverture du fichier stat_report.txt\n");
+        return;
+    }
+
+    fprintf(f, "max_pixel: %d\n\n", max_pixel);
+    fprintf(f, "min_pixel: %d\n\n", min_pixel);
+    fprintf(f, "max_component R: %d\n\n", max_r);
+    fprintf(f, "max_component G: %d\n\n", max_g);
+    fprintf(f, "max_component B: %d\n\n", max_b);
+    fprintf(f, "min_component R: %d\n\n", min_r);
+    fprintf(f, "min_component G: %d\n\n", min_g);
+    fprintf(f, "min_component B: %d\n", min_b);
+
+    fclose(f);
+    free_image_data(data);
+}
+void color_desaturate(char *source_path) {
+    char *data = NULL;
+    int width = 0, height = 0, n = 0;
+
+    read_image_data(source_path, &data, &width, &height, &n);
+
+    int size = width * height * n;
+    char *new_data = malloc(size);
+
+    for (int i = 0; i < width * height; i++) {
+        int r = data[i * n];
+        int g = data[i * n + 1];
+        int b = data[i * n + 2];
+
+        int min_val = r < g ? (r < b ? r : b) : (g < b ? g : b);
+        int max_val = r > g ? (r > b ? r : b) : (g > b ? g : b);
+        char new_val = (min_val + max_val) / 2;
+
+        new_data[i * n]     = new_val;
+        new_data[i * n + 1] = new_val;
+        new_data[i * n + 2] = new_val;
+    }
+
+    write_image_data("image_out.bmp", new_data, width, height);
+    free_image_data(data);
+}
 }   
 
         

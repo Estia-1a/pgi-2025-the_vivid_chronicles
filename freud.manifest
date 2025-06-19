@@ -10,8 +10,8 @@ min_component
 max_component
 color_red
 color_green
-color_bleu
-color_gris
+color_blue
+color_gray
 color_invert
 color_gray_luminance
 mirror_horizontal
@@ -19,3 +19,4 @@ rotate_cw
 stat_report
 rotate_acw
 mirror_vertical
+color_desaturate
