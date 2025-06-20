@@ -1,0 +1,106 @@
+In file included from /home/runner/work/pgi-2025-the_vivid_chronicles/pgi-2025-the_vivid_chronicles/src/features.c:6:
+/home/runner/work/pgi-2025-the_vivid_chronicles/pgi-2025-the_vivid_chronicles/src/utils.h: In function ‘color_desaturate’:
+/home/runner/work/pgi-2025-the_vivid_chronicles/pgi-2025-the_vivid_chronicles/src/utils.h:18:3: error: storage class specified for parameter ‘pixel’
+   18 | } pixel ;
+      |   ^~~~~
+/home/runner/work/pgi-2025-the_vivid_chronicles/pgi-2025-the_vivid_chronicles/src/utils.h:20:1: error: expected declaration specifiers before ‘pixel’
+   20 | pixel *get_pixel(unsigned char *data, const unsigned int width, const unsigned int height, const unsigned int n, const unsigned int x, const unsigned int y);
+      | ^~~~~
+/home/runner/work/pgi-2025-the_vivid_chronicles/pgi-2025-the_vivid_chronicles/src/features.c:15:19: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+   15 | void helloWorld() {
+      |                   ^
+/home/runner/work/pgi-2025-the_vivid_chronicles/pgi-2025-the_vivid_chronicles/src/features.c:20:33: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+   20 | void dimension(char*source_path){
+      |                                 ^
+/home/runner/work/pgi-2025-the_vivid_chronicles/pgi-2025-the_vivid_chronicles/src/features.c:27:37: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+   27 | void first_pixel(char *source_path) {
+      |                                     ^
+/home/runner/work/pgi-2025-the_vivid_chronicles/pgi-2025-the_vivid_chronicles/src/features.c:33:36: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+   33 | void tenth_pixel(char *source_path){
+      |                                    ^
+/home/runner/work/pgi-2025-the_vivid_chronicles/pgi-2025-the_vivid_chronicles/src/features.c:44:48: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+   44 | void print_pixel(char *filename, int x, int y) {
+      |                                                ^
+/home/runner/work/pgi-2025-the_vivid_chronicles/pgi-2025-the_vivid_chronicles/src/features.c:66:35: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+   66 | void max_pixel(char *source_path) {
+      |                                   ^
+/home/runner/work/pgi-2025-the_vivid_chronicles/pgi-2025-the_vivid_chronicles/src/features.c:93:36: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+   93 | void second_line(char *source_path){
+      |                                    ^
+/home/runner/work/pgi-2025-the_vivid_chronicles/pgi-2025-the_vivid_chronicles/src/features.c:113:35: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+  113 | void min_pixel(char *source_path) {
+      |                                   ^
+/home/runner/work/pgi-2025-the_vivid_chronicles/pgi-2025-the_vivid_chronicles/src/features.c:142:55: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+  142 | void min_component(char *source_path, char component) {
+      |                                                       ^
+/home/runner/work/pgi-2025-the_vivid_chronicles/pgi-2025-the_vivid_chronicles/src/features.c:176:56: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+  176 | void max_component(char *source_path, char *component) {
+      |                                                        ^
+/home/runner/work/pgi-2025-the_vivid_chronicles/pgi-2025-the_vivid_chronicles/src/features.c:204:44: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+  204 | void color_red(const char *input_filename) {
+      |                                            ^
+/home/runner/work/pgi-2025-the_vivid_chronicles/pgi-2025-the_vivid_chronicles/src/features.c:229:46: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+  229 | void color_green(const char *input_filename) {
+      |                                              ^
+/home/runner/work/pgi-2025-the_vivid_chronicles/pgi-2025-the_vivid_chronicles/src/features.c:256:45: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+  256 | void color_blue(const char *input_filename) {
+      |                                             ^
+/home/runner/work/pgi-2025-the_vivid_chronicles/pgi-2025-the_vivid_chronicles/src/features.c:282:45: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+  282 | void color_gray(const char *input_filename) {
+      |                                             ^
+/home/runner/work/pgi-2025-the_vivid_chronicles/pgi-2025-the_vivid_chronicles/src/features.c:310:38: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+  310 | void color_invert(char *source_path) {
+      |                                      ^
+/home/runner/work/pgi-2025-the_vivid_chronicles/pgi-2025-the_vivid_chronicles/src/features.c:329:46: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+  329 | void color_gray_luminance(char *source_path) {
+      |                                              ^
+/home/runner/work/pgi-2025-the_vivid_chronicles/pgi-2025-the_vivid_chronicles/src/features.c:350:43: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+  350 | void mirror_horizontal(char *source_path) {
+      |                                           ^
+/home/runner/work/pgi-2025-the_vivid_chronicles/pgi-2025-the_vivid_chronicles/src/features.c:370:36: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+  370 | }void rotate_cw(char *source_path) {
+      |                                    ^
+/home/runner/work/pgi-2025-the_vivid_chronicles/pgi-2025-the_vivid_chronicles/src/features.c:394:36: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+  394 | void rotate_acw(char *source_path) {
+      |                                    ^
+/home/runner/work/pgi-2025-the_vivid_chronicles/pgi-2025-the_vivid_chronicles/src/features.c:417:41: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+  417 | void mirror_vertical(char *source_path) {
+      |                                         ^
+In file included from /home/runner/work/pgi-2025-the_vivid_chronicles/pgi-2025-the_vivid_chronicles/src/features.c:5:
+/home/runner/work/pgi-2025-the_vivid_chronicles/pgi-2025-the_vivid_chronicles/src/features.h:26:6: error: old-style parameter declarations in prototyped function definition
+   26 | void color_desaturate(const char *input_file)
+      |      ^~~~~~~~~~~~~~~~
+/home/runner/work/pgi-2025-the_vivid_chronicles/pgi-2025-the_vivid_chronicles/src/features.c:524: error: expected ‘{’ at end of input
+In file included from /home/runner/work/pgi-2025-the_vivid_chronicles/pgi-2025-the_vivid_chronicles/src/main.c:9:
+/home/runner/work/pgi-2025-the_vivid_chronicles/pgi-2025-the_vivid_chronicles/src/utils.h: In function ‘color_desaturate’:
+/home/runner/work/pgi-2025-the_vivid_chronicles/pgi-2025-the_vivid_chronicles/src/utils.h:18:3: error: storage class specified for parameter ‘pixel’
+   18 | } pixel ;
+      |   ^~~~~
+/home/runner/work/pgi-2025-the_vivid_chronicles/pgi-2025-the_vivid_chronicles/src/utils.h:20:1: error: expected declaration specifiers before ‘pixel’
+   20 | pixel *get_pixel(unsigned char *data, const unsigned int width, const unsigned int height, const unsigned int n, const unsigned int x, const unsigned int y);
+      | ^~~~~
+In file included from /home/runner/work/pgi-2025-the_vivid_chronicles/pgi-2025-the_vivid_chronicles/src/argsparse.h:7,
+                 from /home/runner/work/pgi-2025-the_vivid_chronicles/pgi-2025-the_vivid_chronicles/src/main.c:10:
+/home/runner/work/pgi-2025-the_vivid_chronicles/pgi-2025-the_vivid_chronicles/src/configp.h:18:3: error: storage class specified for parameter ‘Config’
+   18 | } Config ;
+      |   ^~~~~~
+/home/runner/work/pgi-2025-the_vivid_chronicles/pgi-2025-the_vivid_chronicles/src/argsparse.h:9:46: error: expected declaration specifiers or ‘...’ before ‘Config’
+    9 | void parse_arguments( int argc, char **argv, Config * conf);
+      |                                              ^~~~~~
+/home/runner/work/pgi-2025-the_vivid_chronicles/pgi-2025-the_vivid_chronicles/src/argsparse.h:11:23: error: expected declaration specifiers or ‘...’ before ‘Config’
+   11 | void check_debug_mode(Config conf);
+      |                       ^~~~~~
+/home/runner/work/pgi-2025-the_vivid_chronicles/pgi-2025-the_vivid_chronicles/src/main.c:12:33: error: expected ‘=’, ‘,’, ‘;’, ‘asm’ or ‘__attribute__’ before ‘{’ token
+   12 | int main(int argc, char **argv) {
+      |                                 ^
+In file included from /home/runner/work/pgi-2025-the_vivid_chronicles/pgi-2025-the_vivid_chronicles/src/main.c:8:
+/home/runner/work/pgi-2025-the_vivid_chronicles/pgi-2025-the_vivid_chronicles/src/features.h:26:6: error: old-style parameter declarations in prototyped function definition
+   26 | void color_desaturate(const char *input_file)
+      |      ^~~~~~~~~~~~~~~~
+gmake[2]: *** [CMakeFiles/freud.dir/build.make:93: CMakeFiles/freud.dir/src/features.c.o] Error 1
+gmake[2]: *** Waiting for unfinished jobs....
+gmake[2]: *** [CMakeFiles/freud.dir/build.make:107: CMakeFiles/freud.dir/src/main.c.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:87: CMakeFiles/freud.dir/all] Error 2
+gmake: *** [Makefile:136: all] Error 2
+
+The process '/usr/local/bin/cmake' failed with exit code 2
